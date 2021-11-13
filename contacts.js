@@ -34,8 +34,8 @@ const getContactById = async (contactId) => {
 
 const removeContact = async (contactId) => {
   try {
-    const contacts = await listContacts();
-    const newContactList = contacts.filter(contact => contact.id !== Number(contactId))
+    const contact = await listContacts();
+    const newContactList = contact.filter(contact => contact.id !== Number(contactId))
     await fs.writeFile(contactsPath, JSON.stringify(newContactList, null, 2))
     return newContactList;
   } catch (error) {
